@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class Book {
+    private:
+        static int Database_BookID;
+    public: 
+        int bookID;
+        string title;
+        string author;
+        bool availability;
+//      CONSTRUCTOR
+        Book (string t, string a, bool avail = true) : title(t), author(a), availability(avail) {
+            bookID = Database_BookID++;
+        }
+
+//      GETTING INFORMATION OF THE BOOK
+        void get_data(){
+            cout << "ID: " << bookID << "\n";
+            cout << "Book's title: " << title << "\n";
+            cout << "Book's author: " << author << "\n";
+            cout << (availability) ? "Can be borrowed" : "Can't be borrowed";
+        }
+};
+
+//      initialize static member:
+int Book::Database_BookID = 1;
+
+class User {
+    private:
+        static int Database_UserID;
+    public:
+        int UserID;
+        string name;
+        User (string n) : name(n){
+            UserID = Database_UserID++;
+        }
+        void borrow_book()
+        void return_book()
+        void show_borrowed_books()
+        void get_data()
+};
+
+//initialize static member
+int User::Database_UserID = 1;
+
+class Library {
+    public:
+        vector<book> books;
+
+        void add_books()
+        void display_books()
+        findbook
+}
+
+int main() {
+    Book book1 ("Godfather", "Mario Ruzo");
+    book1.get_data();
+}
