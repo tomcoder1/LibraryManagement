@@ -33,26 +33,47 @@ class User {
     public:
         int UserID;
         string name;
+        vector<Book> borrowed_books;
+
         User (string n) : name(n){
             UserID = Database_UserID++;
         }
-        void borrow_book()
-        void return_book()
-        void show_borrowed_books()
-        void get_data()
+        
+        void borrow_book(book t) {
+            borrowed_books.push_back(t);
+        }
+        
+        void return_book(book t) {
+            bool check = false;
+            for (int i = 0; i < borrowed_books.size(); i++){
+                if (borrowed_books[i]->title == t->title){
+                    check = true;
+                    borrowed_books.erase(borrowed_books.begin() + i);
+                }
+                if (check){
+                    cout << "Book has been returned!";
+                }
+                else
+                    cout << "There is no book!";
+            }
+            if
+        }
+        
+        void show_borrowed_books(){
+            for (auto book : borrowed_books){
+                cout << borrowed_books->title;
+            }
+        }
+        
+        void get_data(){
+            cout << "ID: " << UserID << "\n";
+            cout << "Name: " << name << "\n";
+            User.show_borrowed_books();
+        }
 };
 
 //initialize static member
 int User::Database_UserID = 1;
-
-class Library {
-    public:
-        vector<book> books;
-
-        void add_books()
-        void display_books()
-        findbook
-}
 
 int main() {
     Book book1 ("Godfather", "Mario Ruzo");
