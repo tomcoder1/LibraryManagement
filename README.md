@@ -4,7 +4,7 @@ A project about library management created to learn OOP
 
 - [Features](#Features)
 - [What could have been done better](#What-could-have-been-done-better)
-- [What I learned](#What-I-learned)
+- [What I learned after this project](#What-I-learned-after-this-project)
 
 ## Features
 
@@ -22,7 +22,7 @@ The code can't effectively manage a real library (lol). Here are some of the thi
 2. The availability system, together with the borrow/ return interaction, still are flawed.
 
 
-## What I learned
+## What I learned after this project
 
 1. Constructor in a class
 2. Static variable/ static void
