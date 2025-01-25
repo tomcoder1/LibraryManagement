@@ -3,8 +3,8 @@ A project about library management created to learn OOP
 ## Table of Contents
 
 - [Features](#Features)
-- [What could have been done better](#What could have been done better)
-- [What I learned](#What I learned)
+- [What could have been done better](#What-could-have-been-done-better)
+- [What I learned](#What-I-learned)
 
 ## Features
 
