@@ -10,22 +10,34 @@ class Book {
         string title;
         string author;
         bool availability;
-//      CONSTRUCTOR
+        static vector<Book> bookList;
+/*      CONSTRUCTOR*/
         Book (string t, string a, bool avail = true) : title(t), author(a), availability(avail) {
             bookID = Database_BookID++;
+            bookList.push_back(*this); //*this --> the instance
         }
-
-//      GETTING INFORMATION OF THE BOOK
-        void get_data(){
-            cout << "ID: " << bookID << "\n";
-            cout << "Book's title: " << title << "\n";
-            cout << "Book's author: " << author << "\n";
-            cout << (availability) ? "Can be borrowed" : "Can't be borrowed";
+        void gettingBorrowed(){
+            availability = false;
+        }
+/*       GETTING INFORMATION OF THE BOOK*/    
+        void getData(){
+            cout << "ID: " << bookID;
+            cout << " / Book's title: " << title;
+            cout << " / Book's author: " << author;
+            cout << " / Availability: "  << (availability ? "Can be borrowed" : "Can't be borrowed");// ternary operator
+            cout << "\n";
+        }
+/*      PRINT THE BOOKS*/    
+        static void booksDatabase(){
+            for (auto i : bookList)
+                i.getData();
+            cout << "\n";
         }
 };
 
-//      initialize static member:
+/*      initialize static member:*/
 int Book::Database_BookID = 1;
+vector<Book> Book::bookList;
 
 class User {
     private:
@@ -34,48 +46,61 @@ class User {
         int UserID;
         string name;
         vector<Book> borrowed_books;
-
+/*      Constructor*/
         User (string n) : name(n){
             UserID = Database_UserID++;
         }
-        
-        void borrow_book(book t) {
-            borrowed_books.push_back(t);
+/*      Borrow a book*/
+        void borrow_book(Book& t) {//pass by reference -> change the status of the book
+            if (t.availability){
+                borrowed_books.push_back(t);
+                t.gettingBorrowed();
+                cout << t.title << " borrowed successfully!" << "\n";
+            }
+            else    
+                cout << t.title << " can't be borrowed rn, visit again!" << "\n";
         }
-        
-        void return_book(book t) {
+/*      Return book*/        
+        void return_book(Book& t) {
             bool check = false;
-            for (int i = 0; i < borrowed_books.size(); i++){
-                if (borrowed_books[i]->title == t->title){
+            for (int i = 0; i < borrowed_books.size(); i++)
+                if (borrowed_books[i].title == t.title){
                     check = true;
                     borrowed_books.erase(borrowed_books.begin() + i);
+                    t.availability = true;
+                    break;
                 }
-                if (check){
-                    cout << "Book has been returned!";
-                }
-                else
-                    cout << "There is no book!";
-            }
-            if
+            if (check)
+                cout << "Book has been returned!" << "\n";
+            else
+                cout << "You didn't borrow that lil bro!" << "\n";
         }
-        
+/*      Show borrowed books of 1 user*/
         void show_borrowed_books(){
+            cout << "Books borrowed: " << "\n";
             for (auto book : borrowed_books){
-                cout << borrowed_books->title;
+                cout << book.title << " ";
             }
+            cout << "\n";
         }
-        
+/*      print ID, name and borrowed books of a user*/       
         void get_data(){
-            cout << "ID: " << UserID << "\n";
-            cout << "Name: " << name << "\n";
-            User.show_borrowed_books();
+            cout << "ID: " << UserID;
+            cout << " / Name: " << name << "\n";
+            show_borrowed_books();
+            cout << "\n";
         }
 };
-
 //initialize static member
 int User::Database_UserID = 1;
 
 int main() {
     Book book1 ("Godfather", "Mario Ruzo");
-    book1.get_data();
+    Book book2 ("Trinh Thang Binh voi cai benh thang tram", "Anh Phan");
+    Book::booksDatabase();
+    User user1 ("Steve");
+    User user2 ("Tommy");
+    user1.borrow_book(book2);
+    user1.return_book(book2);
+    user2.borrow_book(book2);
 }
