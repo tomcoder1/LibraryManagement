@@ -1,5 +1,5 @@
 # Library Management
-A project about library management created to learn OOP
+A project about library management
 ## Table of Contents
 
 - [Features](#Features)
