@@ -1,5 +1,5 @@
 # Library Management
-A project about library management
+A project about library management, with Command-Line Interaction.
 ## Table of Contents
 
 - [Features](#Features)
@@ -30,4 +30,4 @@ The code can't effectively manage a real library (lol). Here are some of the thi
 
 ## Final words
 
-Please note that I am not a real library manager. This code only serves as a mean of entertainment, and a way for me to learn OOP. Do not take this seriously. 
+Stupid ahh project 
