@@ -1,5 +1,5 @@
 # Library Management
-A project about library management, with Command-Line Interaction.
+A project about library management, with command-line interaction.
 ## Table of Contents
 
 - [Features](#Features)
